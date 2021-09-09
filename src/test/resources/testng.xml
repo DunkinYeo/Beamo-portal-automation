@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Beamo Portal Test" parallel="none" verbose="1" >
+    <parameter name="configfile" value="src/test/resources/config.properties" />
+    <test name="beamo-portal" >
+        <groups>
+            <run>
+                <include name="abstract" />
+                <include name="smoke" />
+                <exclude name="grid" />
+            </run>
+        </groups>
+
+        <packages>
+            <package name="ai.beamo.portal.tests.*" />
+        </packages>
+    </test>
+
+</suite>
