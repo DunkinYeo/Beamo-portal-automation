@@ -26,10 +26,10 @@ public class LoginPage {
         return element;
     }
 
-    public void clickLogin(WebDriver driver, String id, String password) {
-        //Space ID field
-        driver.findElement(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys("test");
-        //User Email field
+    public void clickLogin(WebDriver driver, String space, String id, String password) {
+        //Space field
+        driver.findElement(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys(space);
+        //User ID field
         driver.findElement(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/span[1]/span[1]/div[1]/input[1]")).sendKeys(id);
         //Password button
         driver.findElement(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[3]/div[1]/span[1]/span[1]/div[1]/input[1]")).sendKeys(password);

@@ -1,6 +1,7 @@
 package ai.beamo.portal.library;
 
 import org.apache.commons.configuration2.PropertiesConfiguration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

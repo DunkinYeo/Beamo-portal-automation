@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Pivo Tour Dashboard Test" parallel="methods" thread-count="3" verbose="1" >
+<suite name="Beamo Portal Testt" parallel="methods" thread-count="3" verbose="1" >
     <parameter name="configfile" value="src/test/resources/config_grid.properties" />
-    <test name="pivotourdashboard" >
+    <test name="beamo-portal" >
         <groups>
             <run>
                 <include name="abstract" />
@@ -13,7 +13,7 @@
         </groups>
 
         <packages>
-            <package name="app.pivotour.dashboard.tests.*" />
+            <package name="ai.beamo.portal.tests.*" />
         </packages>
     </test>
 
