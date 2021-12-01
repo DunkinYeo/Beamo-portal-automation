@@ -53,7 +53,7 @@ public class HeaderPage {
                     .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLogout)));
             //Logout
             bLogout.click();
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

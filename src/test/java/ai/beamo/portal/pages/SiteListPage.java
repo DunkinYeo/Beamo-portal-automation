@@ -7,17 +7,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class SiteListPage {
 
-    public WebElement getPageElement(WebDriver driver, String elementText) {
-        WebElement element = null;
+    public Boolean isElementPresent(WebDriver driver, String elementText) {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        Boolean isPresent = false;
+        List<WebElement> elements = null;
+
         switch (elementText) {
             case "CREATE SITE":
-                element = new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.visibilityOfElementLocated(By.className("create-site")));
+                isPresent = driver.findElements(By.className("create-site")).size() > 0;
                 break;
         }
-        return element;
+        return isPresent;
     }
 
 }

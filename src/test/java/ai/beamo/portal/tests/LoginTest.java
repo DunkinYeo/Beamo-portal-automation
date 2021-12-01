@@ -54,10 +54,19 @@ public class LoginTest extends TestBase {
         pLogin.clickLogin(driver, "showcase", id, password);
 
         //Check Beamo Icon
-        //Check "Viewer" role text
+        //Check the name of the role
         HeaderPage pHeader = new HeaderPage();
         assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
         assertTrue(pHeader.getPageElement(driver, "ROLE").getText().toUpperCase().contains(role));
+
+        //Check "Create Site" button
+        SiteListPage pSiteList = new SiteListPage();
+
+        if ( role.equals("MASTER") || role.equals("SITE MANAGER") ) {
+            assertTrue(pSiteList.isElementPresent(driver, "CREATE SITE") == true);
+        } else {
+            assertTrue(pSiteList.isElementPresent(driver, "CREATE SITE") == false);
+        }
 
         //Logout
         //Check Login page again
@@ -101,101 +110,5 @@ public class LoginTest extends TestBase {
             fail();
         }
     }
-
-    @Test(groups = { "smoke" })
-    public void VerifyLoginAsTeamAdmin() {
-        WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
-        //Page loading timeout (10s)
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        try {
-            //Input Space ID, Email, Password and click on login button
-            //Check Login page (Title, elements, etc.)
-            //Log in
-            LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
-            assertEquals(loginTitle, "Beamo - Accounts");
-            pLogin.clickLogin(driver, "test", "dh.shin+admin@3i.ai", "1234qwer");
-
-            //Check Beamo Icon
-            //Check "Viewer" role text
-            HeaderPage pHeader = new HeaderPage();
-            assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
-            assertTrue(pHeader.getPageElement(driver, "ROLE").getText().contains("Team Admin"));
-
-            //Logout
-            //Check Login page again
-            pHeader.Logout(driver, "TEAM ADMIN");
-            assertTrue(pLogin.getPageElement(driver, "BEAMO ICON") != null);
-
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            fail();
-        }
-    }
-
-    @Test(groups = { "smoke" })
-    public void VerifyLoginAsSurveyor() {
-        WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
-        //Page loading timeout (10s)
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        try {
-            //Input Space ID, Email, Password and click on login button
-            //Check Login page (Title, elements, etc.)
-            //Log in
-            LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
-            assertEquals(loginTitle, "Beamo - Accounts");
-            pLogin.clickLogin(driver, "test", "dh.shin+surveyor@3i.ai", "1234qwer");
-
-            //Check Beamo Icon
-            //Check "Viewer" role text
-            HeaderPage pHeader = new HeaderPage();
-            assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
-            assertTrue(pHeader.getPageElement(driver, "ROLE").getText().contains("Surveyor"));
-
-            //Logout
-            //Check Login page again
-            pHeader.Logout(driver, "SURVEYOR");
-            assertTrue(pLogin.getPageElement(driver, "BEAMO ICON") != null);
-
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            fail();
-        }
-    }
-
-    //@Test(groups = { "smoke" })
-    public void VerifyLoginAsSiteManager() {
-        WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
-        //Page loading timeout (10s)
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        try {
-            //Input Space ID, Email, Password and click on login button
-            //Check Login page (Title, elements, etc.)
-            //Log in
-            LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
-            assertEquals(loginTitle, "Beamo - Accounts");
-            pLogin.clickLogin(driver, "test", "dh.shin+sitemanager@3i.ai", "1234qwer");
-
-            //Check Beamo Icon
-            //Check "Viewer" role text
-            HeaderPage pHeader = new HeaderPage();
-            assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
-            assertTrue(pHeader.getPageElement(driver, "ROLE").getText().contains("Site Manager"));
-
-            //Logout
-            //Check Login page again
-            pHeader.Logout(driver, "SITE MANAGER");
-            assertTrue(pLogin.getPageElement(driver, "BEAMO ICON") != null);
-
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            fail();
-        }
-    }
-*/
+   */
 }
