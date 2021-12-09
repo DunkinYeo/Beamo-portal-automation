@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends TestBase {
 
-    private final String SPACE_NAME = "test";
+    private final String SPACE_NAME = "showcase";
 
     @DataProvider(name = "Credentials")
     public Object[][] loginCredentials() {
