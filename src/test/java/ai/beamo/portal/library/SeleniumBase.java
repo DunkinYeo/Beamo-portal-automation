@@ -24,7 +24,7 @@ public class SeleniumBase {
         /* Local Mode*/
         switch (browser) {
             case "CH": //Chrome
-                System.setProperty("webdriver.chrome.driver", "/Users/3i-21-173/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "./chromedriver");
                 driver = new ChromeDriver();
                 break;
             case "IE":

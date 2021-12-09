@@ -29,7 +29,7 @@ public class LoginTest extends TestBase {
         };
     }
 
-    //@Test (dataProvider = "Credentials", groups = { "smoke" } )
+    @Test (dataProvider = "Credentials", groups = { "smoke" } )
     public void verifyLoginByRoles(String id, String password, String role) {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
