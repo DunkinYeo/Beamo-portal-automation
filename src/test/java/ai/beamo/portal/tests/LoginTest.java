@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends TestBase {
 
+    private final String SPACE_NAME = "test";
+
     @DataProvider(name = "Credentials")
     public Object[][] loginCredentials() {
         return new Object[][] {
@@ -27,7 +29,7 @@ public class LoginTest extends TestBase {
         };
     }
 
-    @Test (dataProvider = "Credentials", groups = { "smoke" } )
+    //@Test (dataProvider = "Credentials", groups = { "smoke" } )
     public void verifyLoginByRoles(String id, String password, String role) {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
@@ -51,7 +53,7 @@ public class LoginTest extends TestBase {
         LoginPage pLogin = new LoginPage();
         String loginTitle = pLogin.getPageTitle(driver);
         assertEquals(loginTitle, "Beamo - Accounts");
-        pLogin.clickLogin(driver, "showcase", id, password);
+        pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
         //Check Beamo Icon
         //Check the name of the role
