@@ -13,7 +13,7 @@
         </groups>
 
         <packages>
-            <package name="ai.beamo.portal.tests.*" />
+            <package name="ai.beamo.portal.tests.LoginTest" />
         </packages>
     </test>
 
