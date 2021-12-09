@@ -20,11 +20,12 @@ public class SeleniumBase {
 
     public void openBrowser() throws MalformedURLException {
         String browser = config.getString("BROWSER");
+        String browserpath = config.getString("BROWSERPATH");
         String baseurl = config.getString("BASEURL");
         /* Local Mode*/
         switch (browser) {
             case "CH": //Chrome
-                System.setProperty("webdriver.chrome.driver", "../chromedriver");
+                System.setProperty("webdriver.chrome.driver", browserpath);
                 driver = new ChromeDriver();
                 break;
             case "IE":
