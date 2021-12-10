@@ -14,7 +14,7 @@ public class ManageSiteTest extends TestBase {
 
     private final String SPACE_NAME = "showcase";
 
-    //@Test(groups = { "smoke" } )
+    @Test(groups = { "smoke" } )
     public void verifyCreateSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
@@ -55,7 +55,7 @@ public class ManageSiteTest extends TestBase {
         }
     }
 
-    //@Test(groups = { "smoke" }, dependsOnMethods = "verifyCreateSite")
+    @Test(groups = { "smoke" }, dependsOnMethods = "verifyCreateSite")
     public void verifyDeleteSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 

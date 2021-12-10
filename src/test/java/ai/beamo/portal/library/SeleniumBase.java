@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
+import java.util.Locale;
 
 /* To-Do for Selenium Grid */
 public class SeleniumBase {
@@ -20,12 +21,22 @@ public class SeleniumBase {
 
     public void openBrowser() throws MalformedURLException {
         String browser = config.getString("BROWSER");
-        String browserpath = config.getString("BROWSERPATH");
+        String chromedriverwin = config.getString("CHROMEDRIVERWIN");
+        String chromedrivermac = config.getString("CHROMEDRIVERMAC");
         String baseurl = config.getString("BASEURL");
+
+        String osType = System.getProperty("os.name").toLowerCase();
+        String chromedriver = null;
+        if (osType.contains("mac")) {
+            chromedriver = chromedrivermac;
+        } else if (osType.contains("win")) {
+            chromedriver = chromedriverwin;
+        }
+
         /* Local Mode*/
         switch (browser) {
             case "CH": //Chrome
-                System.setProperty("webdriver.chrome.driver", browserpath);
+                System.setProperty("webdriver.chrome.driver", chromedriver);
                 driver = new ChromeDriver();
                 break;
             case "IE":
