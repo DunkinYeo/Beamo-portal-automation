@@ -12,7 +12,7 @@ import static org.testng.Assert.*;
 
 public class ManageSiteTest extends TestBase {
 
-    private final String SPACE_NAME = "showcase";
+    //private final String SPACE_NAME = "showcase";
 
     @Test(groups = { "smoke" } )
     public void verifyCreateSite() {
