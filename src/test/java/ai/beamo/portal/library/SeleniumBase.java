@@ -14,6 +14,7 @@ import java.util.Locale;
 public class SeleniumBase {
 
     public static WebDriver driver;
+    public static String SPACE_NAME = "test";
 
     // To-Do : Getting parameters from external config file
     public static PropertiesConfiguration config = null;
@@ -23,7 +24,20 @@ public class SeleniumBase {
         String browser = config.getString("BROWSER");
         String chromedriverwin = config.getString("CHROMEDRIVERWIN");
         String chromedrivermac = config.getString("CHROMEDRIVERMAC");
-        String baseurl = config.getString("BASEURL");
+
+        String targetEnv = System.getProperty("environment");
+        String baseurl = null;
+        if (targetEnv.contains("DEV")) {
+            baseurl = config.getString("BASEURLDEV");
+            SPACE_NAME = "showcase";
+        } else if (targetEnv.contains("STAG")) {
+            baseurl = config.getString("BASEURLSTAG");
+            SPACE_NAME = "showcase";
+        } else if (targetEnv.contains("LIVE")) {
+            baseurl = config.getString("BASEURLLIVE");
+            SPACE_NAME = "test";
+        }
+        //String baseurl = config.getString("BASEURL");
 
         String osType = System.getProperty("os.name").toLowerCase();
         String chromedriver = null;

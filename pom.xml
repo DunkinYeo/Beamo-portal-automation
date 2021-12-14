@@ -89,6 +89,9 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M3</version>
           <configuration>
+            <systemPropertyVariables>
+              <environment>${env.USER}</environment>
+            </systemPropertyVariables>
             <suiteXmlFiles>
               <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
             </suiteXmlFiles>

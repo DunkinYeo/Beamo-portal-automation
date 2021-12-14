@@ -10,7 +10,7 @@ import java.io.File;
 
 public class TestBase extends SeleniumBase {
 
-    public WebDriver driver;
+    //public WebDriver driver;
     /*
         To-Do : Any config for Remote Selenium Server in @BeforeTest
      */
@@ -35,7 +35,7 @@ public class TestBase extends SeleniumBase {
     // Create global WebDriver
     @BeforeMethod(groups = { "abstract", "non-grid" })
     public void setUpTests() {
-        WebDriver driver;
+        //WebDriver driver;
         try {
             super.openBrowser();
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class TestBase extends SeleniumBase {
     // Create global WebDriver in Grid Mode
     @BeforeMethod(groups = { "abstract", "grid" })
     public void setUpTestsInGrid() {
-        WebDriver driver;
+        //WebDriver driver;
         try {
             super.openBrowserInGrid();
         } catch (Exception e) {
