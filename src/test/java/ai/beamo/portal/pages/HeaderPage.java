@@ -16,6 +16,11 @@ public class HeaderPage {
         return driver.getTitle();
     }
 
+    public boolean isPresentFTUX(WebDriver driver) {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return driver.findElements(By.xpath("//span[contains(text(),'Got it')]")).size() > 0;
+    }
+
     public WebElement getPageElement(WebDriver driver, String elementText) {
         WebElement element = null;
         switch (elementText) {
@@ -36,6 +41,9 @@ public class HeaderPage {
             //Locate Profile icon
             String xpathRole = "";
             String xpathLogout = "/html/body/div[3]/ul/li[2]";
+            //If FTUX is exist
+            if (isPresentFTUX(driver) == true) xpathLogout = "/html[1]/body[1]/div[4]/ul[1]/li[2]";
+
             switch (role) {
                 case "MASTER": case "TEAM ADMIN": case "SURVEYOR": case "SITE MANAGER": case "COLLABORATOR":
                         xpathRole = "//header/div[1]/div[2]/span[4]/span[1]/div[1]/span[1]/span[1]/div[1]";
@@ -50,7 +58,7 @@ public class HeaderPage {
             bProfile.click();
             //Locate Logout
             WebElement bLogout = new WebDriverWait(driver, 10)
-                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLogout)));
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLogout)));
             //Logout
             bLogout.click();
             //Thread.sleep(2000);

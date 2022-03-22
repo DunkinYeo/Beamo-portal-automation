@@ -44,7 +44,7 @@ public class SiteListPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/section/main/div/div[1]/main/div[1]/div/input")));
         searchBar.sendKeys(keyword);
         WebElement site = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'" + keyword +"')]")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'" + keyword +"')]")));
         site.click();
     }
 

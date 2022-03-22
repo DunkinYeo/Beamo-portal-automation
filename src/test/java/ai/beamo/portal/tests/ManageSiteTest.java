@@ -14,7 +14,7 @@ public class ManageSiteTest extends TestBase {
 
     //private final String SPACE_NAME = "showcase";
 
-    @Test(groups = { "smoke" } )
+    @Test(groups = { "smoke", "site" } )
     public void verifyCreateSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
@@ -55,7 +55,7 @@ public class ManageSiteTest extends TestBase {
         }
     }
 
-    @Test(groups = { "smoke" }, dependsOnMethods = "verifyCreateSite")
+    @Test(groups = { "smoke", "site" }, dependsOnMethods = "verifyCreateSite")
     public void verifyDeleteSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
@@ -70,7 +70,7 @@ public class ManageSiteTest extends TestBase {
             pSiteList.searchSite(driver, "Automated Site");
 
             //Edit menu
-            SiteProfilePage pSiteProfile = new SiteProfilePage();
+            SiteProfilePage pSiteProfile = new SiteProfilePage(driver);
             WebElement bEditMenu = pSiteProfile.getPageElement(driver, "EDIT MENU");
             bEditMenu.click();
 
