@@ -6,6 +6,7 @@ import ai.beamo.portal.pages.HeaderPage;
 import ai.beamo.portal.pages.LoginPage;
 
 import ai.beamo.portal.pages.SiteListPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.DataProvider;
@@ -54,6 +55,7 @@ public class LoginTest extends TestBase {
         String loginTitle = pLogin.getPageTitle(driver);
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
+
 
         //Check Beamo Icon
         //Check the name of the role

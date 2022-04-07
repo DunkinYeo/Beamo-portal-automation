@@ -14,7 +14,7 @@ public class ManagePlansTest extends TestBase {
 
     final String SITE_PLANS = "Test Automation Site - Plans";
 
-    @Test(groups = {"smoke", "plan"})
+    @Test (groups = {"smoke", "plan"})
     public void verifyAddOutdoorPlan() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 

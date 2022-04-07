@@ -29,7 +29,7 @@ public class SiteListPage {
         switch (elementText) {
             case "CREATE SITE":
                 element = new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.visibilityOfElementLocated(By.className("create-site")));
+                        .until(ExpectedConditions.elementToBeClickable(By.className("create-site")));
                 break;
             case "SEARCH BAR":
                 element = new WebDriverWait(driver, 10)

@@ -14,7 +14,7 @@ public class ManageSiteTest extends TestBase {
 
     //private final String SPACE_NAME = "showcase";
 
-    @Test(groups = { "smoke", "site" } )
+    @Test (groups = { "smoke", "site" } )
     public void verifyCreateSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
@@ -27,6 +27,7 @@ public class ManageSiteTest extends TestBase {
             //Click "Create Site"
             SiteListPage pSiteList = new SiteListPage();
             WebElement bCreateSite = pSiteList.getPageElement(driver, "CREATE SITE");
+            Thread.sleep(2000);
             bCreateSite.click();
 
             //Input Site Name, Location, Latitude, Longitude
@@ -41,8 +42,9 @@ public class ManageSiteTest extends TestBase {
             inputLocation.sendKeys("216 Sangam-dong, Mapo-gu, Seoul, South Korea");
             inputLatitude.sendKeys("37.5788602");
             inputLongitude.sendKeys("126.8906097");
-            bCreateSiteInProfile.click();
+            Thread.sleep(2000);
 
+            bCreateSiteInProfile.click();
             //Save
             CreateSiteLabelsPage pCreateSiteLabels = new CreateSiteLabelsPage();
             WebElement bSave = pCreateSiteLabels.getPageElement(driver, "SAVE");
@@ -55,7 +57,7 @@ public class ManageSiteTest extends TestBase {
         }
     }
 
-    @Test(groups = { "smoke", "site" }, dependsOnMethods = "verifyCreateSite")
+    @Test (groups = { "smoke", "site" }, dependsOnMethods = "verifyCreateSite")
     public void verifyDeleteSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
 
