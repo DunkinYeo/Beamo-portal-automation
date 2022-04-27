@@ -33,6 +33,7 @@ public class LoginTest extends TestBase {
     @Test (dataProvider = "Credentials", groups = { "smoke", "login" } )
     public void verifyLoginByRoles(String id, String password, String role) {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
             verifyLogin(driver, id, password, role);
