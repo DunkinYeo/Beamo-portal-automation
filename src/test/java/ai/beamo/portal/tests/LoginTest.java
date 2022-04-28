@@ -36,6 +36,7 @@ public class LoginTest extends TestBase {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
+            Thread.sleep(2000);
             verifyLogin(driver, id, password, role);
 
         } catch (Exception e) {
