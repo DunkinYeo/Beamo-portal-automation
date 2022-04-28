@@ -33,10 +33,10 @@ public class LoginTest extends TestBase {
     @Test (dataProvider = "Credentials", groups = { "smoke", "login" } )
     public void verifyLoginByRoles(String id, String password, String role) {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
             verifyLogin(driver, id, password, role);
 
         } catch (Exception e) {
@@ -57,7 +57,6 @@ public class LoginTest extends TestBase {
         String loginTitle = pLogin.getPageTitle(driver);
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
-
 
         //Check Beamo Icon
         //Check the name of the role
