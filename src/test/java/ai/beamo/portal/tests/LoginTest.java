@@ -60,13 +60,17 @@ public class LoginTest extends TestBase {
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
+
         //Check Beamo App loaded
         //Check the name of the role
         HeaderPage pHeader = new HeaderPage();
-        //assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
+        assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
         assertTrue(pHeader.getPageElement(driver, "ROLE").getText().toUpperCase().contains(role));
-        String appTitle = pHeader.getPageTitle(driver);
-        assertEquals(appTitle, "Beamo - App");
 
         //Check "Create Site" button
         SiteListPage pSiteList = new SiteListPage();
