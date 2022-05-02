@@ -39,6 +39,7 @@ public class LoginTest extends TestBase {
 
         try {
             //Thread.sleep(2000);
+            driver.manage().window().maximize();
             verifyLogin(driver, id, password, role);
 
         } catch (Exception e) {
