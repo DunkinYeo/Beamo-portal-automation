@@ -9,6 +9,7 @@ import ai.beamo.portal.pages.SiteListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
@@ -38,8 +39,6 @@ public class LoginTest extends TestBase {
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
-            //Thread.sleep(2000);
-            driver.manage().window().maximize();
             verifyLogin(driver, id, password, role);
 
         } catch (Exception e) {
@@ -61,11 +60,13 @@ public class LoginTest extends TestBase {
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
-        //Check Beamo Icon
+        //Check Beamo App loaded
         //Check the name of the role
         HeaderPage pHeader = new HeaderPage();
-        assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
+        //assertTrue(pHeader.getPageElement(driver, "BEAMO ICON") != null);
         assertTrue(pHeader.getPageElement(driver, "ROLE").getText().toUpperCase().contains(role));
+        String appTitle = pHeader.getPageTitle(driver);
+        assertEquals(appTitle, "Beamo - App");
 
         //Check "Create Site" button
         SiteListPage pSiteList = new SiteListPage();
