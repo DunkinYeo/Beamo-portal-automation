@@ -62,6 +62,7 @@ public class SeleniumBase {
         }
 
         driver.get(baseurl);
+        driver.manage().window().maximize();
     }
 
     public void closeBrowser() {
