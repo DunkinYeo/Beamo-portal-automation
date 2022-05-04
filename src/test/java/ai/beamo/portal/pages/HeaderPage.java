@@ -36,7 +36,7 @@ public class HeaderPage {
         return element;
     }
     public void Logout(WebDriver driver, String role) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try {
             //Locate Profile icon
             String xpathRole = "";
