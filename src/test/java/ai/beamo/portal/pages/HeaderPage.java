@@ -42,7 +42,7 @@ public class HeaderPage {
             String xpathRole = "";
             String xpathLogout = "/html/body/div[3]/ul/li[2]";
             //If FTUX is exist
-            if (isPresentFTUX(driver) == true) xpathLogout = "/html[1]/body[1]/div[4]/ul[1]/li[2]";
+            if (isPresentFTUX(driver) == true) xpathLogout = "/html/body/div[4]/ul/li[2]";
 
             switch (role) {
                 case "MASTER": case "TEAM ADMIN": case "SURVEYOR": case "SITE MANAGER": case "COLLABORATOR":
@@ -53,12 +53,12 @@ public class HeaderPage {
                         break;
             }
 
-            WebElement bProfile = new WebDriverWait(driver, 10)
-                    .until(ExpectedConditions.elementToBeClickable(By.xpath(xpathRole)));
+            WebElement bProfile = new WebDriverWait(driver, 20)
+                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathRole)));
             bProfile.click();
             //Locate Logout
-            WebElement bLogout = new WebDriverWait(driver, 10)
-                    .until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLogout)));
+            WebElement bLogout = new WebDriverWait(driver, 20)
+                    .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLogout)));
             //Logout
             bLogout.click();
             //Thread.sleep(2000);
