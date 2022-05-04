@@ -25,11 +25,11 @@ public class HeaderPage {
         WebElement element = null;
         switch (elementText) {
             case "BEAMO ICON":
-                element = new WebDriverWait(driver, 10)
+                element = new WebDriverWait(driver, 20)
                         .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/section/header/div/div[1]/span/span/div/img")));
                 break;
             case "ROLE":
-                element = new WebDriverWait(driver, 10)
+                element = new WebDriverWait(driver, 20)
                         .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//header/div[1]/div[2]/div[1]/span[1]")));
                 break;
         }
