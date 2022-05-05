@@ -61,7 +61,7 @@ public class LoginTest extends TestBase {
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (Exception e) {
 
         }
