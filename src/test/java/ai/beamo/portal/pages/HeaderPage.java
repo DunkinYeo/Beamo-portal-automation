@@ -46,16 +46,21 @@ public class HeaderPage {
 
             switch (role) {
                 case "MASTER": case "TEAM ADMIN": case "SURVEYOR": case "SITE MANAGER": case "COLLABORATOR":
-                        xpathRole = "//header/div[1]/div[2]/span[4]/span[1]/div[1]/span[1]/span[1]/div[1]";
+                        xpathRole = "/html/body/div[1]/section/header/div/div[2]/span[4]/span/div/span/span/div";
                         break;
                 case "VIEWER":
-                        xpathRole = "//header/div[1]/div[2]/span[3]/span[1]/div[1]/span[1]/span[1]/div[1]";
+                        xpathRole = "/html/body/div[1]/section/header/div/div[2]/span[3]/span/div/span/span/div";
                         break;
             }
+
+            Thread.sleep(2000);
 
             WebElement bProfile = new WebDriverWait(driver, 20)
                     .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathRole)));
             bProfile.click();
+
+            Thread.sleep(2000);
+
             //Locate Logout
             WebElement bLogout = new WebDriverWait(driver, 20)
                     .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathLogout)));

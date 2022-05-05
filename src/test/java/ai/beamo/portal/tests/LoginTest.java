@@ -48,7 +48,7 @@ public class LoginTest extends TestBase {
 
     }
 
-    public void verifyLogin(WebDriver driver, String id, String password, String role) {
+    public void verifyLogin(WebDriver driver, String id, String password, String role) throws Exception {
         //Page loading timeout (10s)
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         
@@ -60,11 +60,7 @@ public class LoginTest extends TestBase {
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
-        try {
-            //Thread.sleep(2000);
-        } catch (Exception e) {
-
-        }
+        Thread.sleep(2000);
 
         //Check Beamo App loaded
         //Check the name of the role
