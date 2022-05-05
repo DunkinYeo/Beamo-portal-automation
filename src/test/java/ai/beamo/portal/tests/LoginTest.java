@@ -60,6 +60,11 @@ public class LoginTest extends TestBase {
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
         Thread.sleep(2000);
 
         //Check Beamo App loaded
