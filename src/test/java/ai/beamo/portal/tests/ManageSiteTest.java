@@ -4,9 +4,12 @@ import ai.beamo.portal.library.SeleniumBase;
 import ai.beamo.portal.library.TestBase;
 import ai.beamo.portal.library.ThreadSafeWebDriverStorage;
 import ai.beamo.portal.pages.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.*;
 
@@ -60,6 +63,7 @@ public class ManageSiteTest extends TestBase {
     @Test (groups = { "smoke", "site" }, dependsOnMethods = "verifyCreateSite")
     public void verifyDeleteSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
             //Login
@@ -67,8 +71,14 @@ public class ManageSiteTest extends TestBase {
             String loginTitle = pLogin.getPageTitle(driver);
             pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
 
-            //Search the site
+            //Check On-boarding Popup
             SiteListPage pSiteList = new SiteListPage();
+            if (pSiteList.isElementPresent(driver, "CREATE SITE") == true) {
+                driver.findElement(By.xpath("//span[contains(text(),'Got it')]")).click();
+            }
+
+            //Search the site
+            //SiteListPage pSiteList = new SiteListPage();
             pSiteList.searchSite(driver, "Automated Site");
 
             //Edit menu
