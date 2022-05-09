@@ -27,12 +27,13 @@ public class ManageSiteTest extends TestBase {
             String loginTitle = pLogin.getPageTitle(driver);
             pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
 
+            Thread.sleep(2000);
             //Click "Create Site"
             SiteListPage pSiteList = new SiteListPage();
             WebElement bCreateSite = pSiteList.getPageElement(driver, "CREATE SITE");
-            Thread.sleep(2000);
             bCreateSite.click();
 
+            Thread.sleep(2000);
             //Input Site Name, Location, Latitude, Longitude
             CreateSiteProfilePage pCreateSiteProfile = new CreateSiteProfilePage();
             WebElement inputSiteName = pCreateSiteProfile.getPageElement(driver, "SITE NAME");
@@ -45,9 +46,9 @@ public class ManageSiteTest extends TestBase {
             inputLocation.sendKeys("216 Sangam-dong, Mapo-gu, Seoul, South Korea");
             inputLatitude.sendKeys("37.5788602");
             inputLongitude.sendKeys("126.8906097");
-            Thread.sleep(2000);
-
             bCreateSiteInProfile.click();
+
+            Thread.sleep(2000);
             //Save
             CreateSiteLabelsPage pCreateSiteLabels = new CreateSiteLabelsPage();
             WebElement bSave = pCreateSiteLabels.getPageElement(driver, "SAVE");
