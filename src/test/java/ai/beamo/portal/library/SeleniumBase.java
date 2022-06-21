@@ -15,7 +15,7 @@ import java.util.Locale;
 public class SeleniumBase {
 
     public static WebDriver driver;
-    public static String SPACE_NAME = "test";
+    public static String SPACE_NAME = "d-en-en";
 
     // To-Do : Getting parameters from external config file
     public static PropertiesConfiguration config = null;
@@ -29,10 +29,10 @@ public class SeleniumBase {
         String ffdrivermac = config.getString("FFDRIVERMAC");
 
         String targetEnv = System.getProperty("environment");
-        String baseurl = null;
+        String baseurl = "https://accounts.beamo.dev/";
         if (targetEnv.contains("DEV")) {
             baseurl = config.getString("BASEURLDEV");
-            SPACE_NAME = "showcase";
+            SPACE_NAME = "d-en-en";
         } else if (targetEnv.contains("STAG")) {
             baseurl = config.getString("BASEURLSTAG");
             SPACE_NAME = "showcase";

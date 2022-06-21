@@ -39,13 +39,13 @@ public class SiteListPage {
         return element;
     }
 
-    public void searchSite(WebDriver driver, String keyword) {
+    public void searchSite(WebDriver driver, String keyword) throws Exception {
         WebElement searchBar = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/section/main/div/div[1]/main/div[1]/div/input")));
         searchBar.sendKeys(keyword);
         WebElement site = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'" + keyword +"')]")));
-        //Thread.sleep(5000);
+        Thread.sleep(1000);
         site.click();
     }
 

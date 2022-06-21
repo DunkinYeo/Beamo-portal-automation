@@ -45,7 +45,7 @@ public class HeaderPage {
             if (isPresentFTUX(driver) == true) xpathLogout = "/html/body/div[4]/ul/li[2]";
 
             switch (role) {
-                case "MASTER": case "TEAM ADMIN": case "SURVEYOR": case "SITE MANAGER": case "COLLABORATOR":
+                case "MASTER": case "SUPER ADMIN": case "TEAM ADMIN": case "SURVEYOR": case "SITE MANAGER": case "COLLABORATOR":
                         xpathRole = "/html/body/div[1]/section/header/div/div[2]/span[4]/span/div/span/span/div";
                         break;
                 case "VIEWER":

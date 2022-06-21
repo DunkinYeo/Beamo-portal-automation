@@ -22,12 +22,13 @@ public class LoginTest extends TestBase {
     @DataProvider(name = "Credentials")
     public Object[][] loginCredentials() {
         return new Object[][] {
-                { "tmaster", "1234qwer", "MASTER" },
+                { "qatest", "1234@qwer", "SUPER ADMIN" },
                 { "dh.shin+ta_sitemanager@3i.ai", "qwer1234", "SITE MANAGER" },
                 { "dh.shin+ta_admin@3i.ai", "qwer1234", "TEAM ADMIN" },
-                { "dh.shin+ta_surveyor@3i.ai", "qwer1234", "SURVEYOR" },
+                { "dh.shin+ta_surveyor@3i.ai", "qwer1234", "SURVEYOR" }
+                /*
                 { "dh.shin+ta_collaborator@3i.ai", "qwer1234", "COLLABORATOR" },
-                { "dh.shin+ta_viewer@3i.ai", "qwer1234", "VIEWER" }
+                { "dh.shin+ta_viewer@3i.ai", "qwer1234", "VIEWER" } */
         };
     }
 
@@ -69,7 +70,7 @@ public class LoginTest extends TestBase {
         //Check "Create Site" button
         SiteListPage pSiteList = new SiteListPage();
 
-        if ( role.equals("MASTER") || role.equals("SITE MANAGER") ) {
+        if ( role.equals("MASTER") || role.equals("SUPER ADMIN") || role.equals("SITE MANAGER") ) {
             assertTrue(pSiteList.isElementPresent(driver, "CREATE SITE") == true);
         } else {
             assertTrue(pSiteList.isElementPresent(driver, "CREATE SITE") == false);
@@ -78,6 +79,7 @@ public class LoginTest extends TestBase {
         //Logout
         //Check Login page again
         pHeader.Logout(driver, role);
+        Thread.sleep(2000);
         assertTrue(pLogin.getPageElement(driver, "BEAMO ICON") != null);
     }
 

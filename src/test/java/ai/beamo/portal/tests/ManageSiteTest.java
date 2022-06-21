@@ -90,7 +90,7 @@ public class ManageSiteTest extends TestBase {
             //Delete
             WebElement bDelete = pSiteProfile.getPageElement(driver, "DELETE");
             bDelete.click();
-            //Thread.sleep(2000);
+            Thread.sleep(1000);
 
             //Confirm delete
 
@@ -99,7 +99,7 @@ public class ManageSiteTest extends TestBase {
             //System.out.println("FOUND ELEMENT");
             bConfirmDelete.click();
 
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
 
         } catch (Exception e) {
             e.printStackTrace(System.out);
