@@ -4,6 +4,7 @@ import ai.beamo.portal.library.SeleniumBase;
 import ai.beamo.portal.library.TestBase;
 import ai.beamo.portal.library.ThreadSafeWebDriverStorage;
 import ai.beamo.portal.pages.*;
+import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,7 +62,73 @@ public class ManageSiteTest extends TestBase {
         }
     }
 
-    @Test (groups = { "smoke", "site" }, dependsOnMethods = "verifyCreateSite")
+    @Test (groups = { "smoke", "site"}, dependsOnMethods = "verifyCreateSite")
+    public void verifyUpdateSite() {
+        WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        try {
+            //login
+            LoginPage pLogin = new LoginPage();
+            String loginTitle = pLogin.getPageTitle(driver);
+            pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+
+
+            //Check On-borading Popup
+            SiteListPage pSiteList = new SiteListPage();
+            if (pSiteList.isElementPresent(driver, "CREATE SITE") == true) {
+                driver.findElement(By.xpath("//span[contains(text(),'Got it')]")).click();
+            }
+
+            //Search the site
+            //SiteListPage pSiteList = new SiteListPage();
+            pSiteList.searchSite(driver, "Automated Site");
+
+            //Edit menu
+            SiteProfilePage pSiteProfile = new SiteProfilePage(driver);
+            WebElement bEditMenu = pSiteProfile.getPageElement(driver, "EDIT MENU");
+            bEditMenu.click();
+
+            //Edit
+            WebElement bEdit = pSiteProfile.getPageElement(driver, "EDIT");
+            bEdit.click();
+            Thread.sleep(1000);
+
+            //Update the site profile
+
+            EditSiteProfilePage editSiteProfilePage= new EditSiteProfilePage(driver);
+
+            //Update Site name to Automated update site name
+            editSiteProfilePage.updateSiteName("Automated Update Site");
+
+            //update site locaion to Tokyo tower
+            editSiteProfilePage.updateLocation("4 Chome-2-8 Shibakoen, Minato City, Tokyo 105-0011, Japan");
+
+
+            for (int i = 0; i < 2; i++)
+            {
+                editSiteProfilePage.clickSave();
+                Thread.sleep(2000);
+            }
+
+            SiteProfilePage siteProfilePage = new SiteProfilePage(driver);
+            String siteName = siteProfilePage.getSiteName();
+
+            try {
+                assertEquals("Automated Update Site", siteName);
+            }catch (Exception e){
+                System.out.println("Value of the site Name " + siteName);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            fail();
+        }
+
+    }
+
+    @Test (groups = { "smoke", "site" }, dependsOnMethods = "verifyUpdateSite")
     public void verifyDeleteSite() {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -80,7 +147,7 @@ public class ManageSiteTest extends TestBase {
 
             //Search the site
             //SiteListPage pSiteList = new SiteListPage();
-            pSiteList.searchSite(driver, "Automated Site");
+            pSiteList.searchSite(driver, "Automated Update Site");
 
             //Edit menu
             SiteProfilePage pSiteProfile = new SiteProfilePage(driver);
