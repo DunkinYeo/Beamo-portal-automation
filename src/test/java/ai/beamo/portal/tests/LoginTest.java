@@ -25,10 +25,9 @@ public class LoginTest extends TestBase {
                 { "qatest", "1234@qwer", "SUPER ADMIN" },
                 { "dh.shin+ta_sitemanager@3i.ai", "qwer1234", "SITE MANAGER" },
                 { "dh.shin+ta_admin@3i.ai", "qwer1234", "TEAM ADMIN" },
-                { "dh.shin+ta_surveyor@3i.ai", "qwer1234", "SURVEYOR" }
-                /*
+                { "dh.shin+ta_surveyor@3i.ai", "qwer1234", "SURVEYOR" },
                 { "dh.shin+ta_collaborator@3i.ai", "qwer1234", "COLLABORATOR" },
-                { "dh.shin+ta_viewer@3i.ai", "qwer1234", "VIEWER" } */
+                { "dh.shin+ta_viewer@3i.ai", "qwer1234", "VIEWER" }
         };
     }
 
@@ -38,6 +37,7 @@ public class LoginTest extends TestBase {
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
+            System.out.println(role);
             verifyLogin(driver, id, password, role);
 
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class LoginTest extends TestBase {
         assertEquals(loginTitle, "Beamo - Accounts");
         pLogin.clickLogin(driver, SPACE_NAME, id, password);
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
         //Check Beamo App loaded
         //Check the name of the role
@@ -79,7 +79,7 @@ public class LoginTest extends TestBase {
         //Logout
         //Check Login page again
         pHeader.Logout(driver, role);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         assertTrue(pLogin.getPageElement(driver, "BEAMO ICON") != null);
     }
 
