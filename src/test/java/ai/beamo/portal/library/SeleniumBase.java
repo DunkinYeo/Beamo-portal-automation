@@ -85,7 +85,35 @@ public class SeleniumBase {
         isRunningInGrid = true;
         String hubhost = config.getString("HUBHOST");
         String browser = config.getString("BROWSER");
-        String baseurl = config.getString("BASEURL");
+        String chromedriverwin = config.getString("CHROMEDRIVERWIN");
+        String chromedrivermac = config.getString("CHROMEDRIVERMAC");
+        String ffdriverwin = config.getString("FFDRIVERWIN");
+        String ffdrivermac = config.getString("FFDRIVERMAC");
+
+        String targetEnv = System.getProperty("environment");
+        String baseurl = "https://accounts.beamo.dev/";
+        if (targetEnv.contains("DEV")) {
+            baseurl = config.getString("BASEURLDEV");
+            SPACE_NAME = "d-en-en";
+        } else if (targetEnv.contains("STAG")) {
+            baseurl = config.getString("BASEURLSTAG");
+            SPACE_NAME = "showcase";
+        } else if (targetEnv.contains("LIVE")) {
+            baseurl = config.getString("BASEURLLIVE");
+            SPACE_NAME = "test";
+        }
+        //String baseurl = config.getString("BASEURL");
+
+        String osType = System.getProperty("os.name").toLowerCase();
+        String chromedriver = null;
+        String ffdriver = null;
+        if (osType.contains("mac")) {
+            chromedriver = chromedrivermac;
+            ffdriver = ffdrivermac;
+        } else if (osType.contains("win")) {
+            chromedriver = chromedriverwin;
+            ffdriver = ffdriverwin;
+        }
 
         /* Selenium Grid Mode*/
         switch (browser) {
