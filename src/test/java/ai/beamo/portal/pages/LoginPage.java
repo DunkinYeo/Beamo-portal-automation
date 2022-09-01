@@ -27,6 +27,38 @@ public class LoginPage {
         return element;
     }
 
+    public void inputSpaceID(WebDriver driver, String space) {
+        WebElement weSpace = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")));
+        weSpace.sendKeys(space);
+
+        WebElement btnContinue = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/button[1]")));
+        btnContinue.click();
+    }
+
+    public void inputEmail(WebDriver driver, String email) {
+        WebElement weEmail = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")));
+        weEmail.sendKeys(email);
+
+        WebElement btnContinue = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/button[1]")));
+        btnContinue.click();
+    }
+
+    public void inputPasswordAndLogin(WebDriver driver, String password) {
+        WebElement weEmail = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/div[1]/input[1]")));
+        weEmail.sendKeys(password);
+
+        WebElement btnLogin = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[4]/div[1]/button[1]")));
+        btnLogin.click();
+    }
+
+    //Deprecated by UI changes to SSO
+    /*
     public void clickLogin(WebDriver driver, String space, String id, String password) {
         //Space field
         WebElement weSpace = new WebDriverWait(driver, 10)
@@ -48,6 +80,6 @@ public class LoginPage {
         Actions actions = new Actions(driver);
         actions.moveToElement(weLogin).click().perform();
         //weLogin.click();
-
     }
+    */
 }

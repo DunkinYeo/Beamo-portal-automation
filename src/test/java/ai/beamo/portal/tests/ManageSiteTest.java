@@ -26,7 +26,7 @@ public class ManageSiteTest extends TestBase {
             //Login
             LoginPage pLogin = new LoginPage();
             String loginTitle = pLogin.getPageTitle(driver);
-            pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+            //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
 
             Thread.sleep(2000);
             //Click "Create Site"
@@ -72,7 +72,7 @@ public class ManageSiteTest extends TestBase {
             //login
             LoginPage pLogin = new LoginPage();
             String loginTitle = pLogin.getPageTitle(driver);
-            pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+            //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
 
 
             //Check On-borading Popup
@@ -137,7 +137,7 @@ public class ManageSiteTest extends TestBase {
             //Login
             LoginPage pLogin = new LoginPage();
             String loginTitle = pLogin.getPageTitle(driver);
-            pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+            //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
 
             //Check On-boarding Popup
             SiteListPage pSiteList = new SiteListPage();

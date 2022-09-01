@@ -21,7 +21,7 @@ public class ManagePlansTest extends TestBase {
         try {
             //Login
             LoginPage pLogin = new LoginPage();
-            pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_admin@3i.ai", "qwer1234");
+            //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_admin@3i.ai", "qwer1234");
 
             //Search the site
             SiteListPage pSiteList = new SiteListPage();

@@ -10,7 +10,7 @@
                 <include name="smoke" />
                 <include name="login" />
                 <exclude name="grid" />
-                <include name="site" />
+                <exclude name="site" />
                 <exclude name="plan" />
             </run>
         </groups>

@@ -22,7 +22,7 @@ public class LoginTest extends TestBase {
     @DataProvider(name = "Credentials")
     public Object[][] loginCredentials() {
         return new Object[][] {
-                { "qatest", "1234@qwer", "SUPER ADMIN" },
+                { "qatest@3i.ai", "1234@qwer", "SUPER ADMIN" },
                 { "dh.shin+ta_sitemanager@3i.ai", "qwer1234", "SITE MANAGER" },
                 { "dh.shin+ta_admin@3i.ai", "qwer1234", "TEAM ADMIN" },
                 { "dh.shin+ta_surveyor@3i.ai", "qwer1234", "SURVEYOR" },
@@ -32,13 +32,14 @@ public class LoginTest extends TestBase {
     }
 
     @Test (dataProvider = "Credentials", groups = { "smoke", "login" } )
-    public void verifyLoginByRoles(String id, String password, String role) {
+    public void verifyLoginByRoles(String email, String password, String role) {
         WebDriver driver = ThreadSafeWebDriverStorage.getDriver();
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
             System.out.println(role);
-            verifyLogin(driver, id, password, role);
+            verifyLogin(driver, email, password, role);
+            Thread.sleep(3000);
 
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -47,7 +48,7 @@ public class LoginTest extends TestBase {
 
     }
 
-    public void verifyLogin(WebDriver driver, String id, String password, String role) throws Exception {
+    public void verifyLogin(WebDriver driver, String email, String password, String role) throws Exception {
         //Page loading timeout (10s)
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         
@@ -57,8 +58,14 @@ public class LoginTest extends TestBase {
         LoginPage pLogin = new LoginPage();
         String loginTitle = pLogin.getPageTitle(driver);
         assertEquals(loginTitle, "Beamo - Accounts");
-        pLogin.clickLogin(driver, SPACE_NAME, id, password);
-
+        // Removed by Login flow changed to SSO
+        // pLogin.clickLogin(driver, SPACE_NAME, id, password);
+        //New SSO UI
+        pLogin.inputSpaceID(driver, SPACE_NAME);
+        Thread.sleep(3000);
+        pLogin.inputEmail(driver, email);
+        Thread.sleep(3000);
+        pLogin.inputPasswordAndLogin(driver, password);
         Thread.sleep(5000);
 
         //Check Beamo App loaded
