@@ -8,9 +8,9 @@
             <run>
                 <include name="abstract" />
                 <include name="smoke" />
-                <include name="login" />
+                <exclude name="login" />
                 <exclude name="grid" />
-                <exclude name="site" />
+                <include name="site" />
                 <exclude name="plan" />
             </run>
         </groups>

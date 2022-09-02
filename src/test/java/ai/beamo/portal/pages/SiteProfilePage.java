@@ -52,7 +52,7 @@ public class SiteProfilePage extends BasePage {
                 break;
             case "CONFIRM DELETE":
                 element = new WebDriverWait(driver, 10)
-                        .until(ExpectedConditions.elementToBeClickable(By.xpath("//body/div[2]/div[1]/div[3]/button[2]")));
+                        .until(ExpectedConditions.elementToBeClickable(By.xpath("//body/div[3]/div[1]/div[3]/button[2]")));
                 break;
             case "EDIT":
                 element = new WebDriverWait(driver, 10)

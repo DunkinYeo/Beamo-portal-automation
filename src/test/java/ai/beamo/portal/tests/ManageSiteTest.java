@@ -25,8 +25,14 @@ public class ManageSiteTest extends TestBase {
         try {
             //Login
             LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
             //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+            //New SSO UI
+            pLogin.inputSpaceID(driver, SPACE_NAME);
+            Thread.sleep(3000);
+            pLogin.inputEmail(driver, "dh.shin+ta_sitemanager@3i.ai");
+            Thread.sleep(3000);
+            pLogin.inputPasswordAndLogin(driver, "qwer1234");
+            Thread.sleep(5000);
 
             Thread.sleep(2000);
             //Click "Create Site"
@@ -71,9 +77,14 @@ public class ManageSiteTest extends TestBase {
         try {
             //login
             LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
             //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
-
+            //New SSO UI
+            pLogin.inputSpaceID(driver, SPACE_NAME);
+            Thread.sleep(3000);
+            pLogin.inputEmail(driver, "dh.shin+ta_sitemanager@3i.ai");
+            Thread.sleep(3000);
+            pLogin.inputPasswordAndLogin(driver, "qwer1234");
+            Thread.sleep(5000);
 
             //Check On-borading Popup
             SiteListPage pSiteList = new SiteListPage();
@@ -84,7 +95,7 @@ public class ManageSiteTest extends TestBase {
             //Search the site
             //SiteListPage pSiteList = new SiteListPage();
             pSiteList.searchSite(driver, "Automated Site");
-
+            Thread.sleep(3000);
             //Edit menu
             SiteProfilePage pSiteProfile = new SiteProfilePage(driver);
             WebElement bEditMenu = pSiteProfile.getPageElement(driver, "EDIT MENU");
@@ -136,8 +147,14 @@ public class ManageSiteTest extends TestBase {
         try {
             //Login
             LoginPage pLogin = new LoginPage();
-            String loginTitle = pLogin.getPageTitle(driver);
             //pLogin.clickLogin(driver, SPACE_NAME, "dh.shin+ta_sitemanager@3i.ai", "qwer1234");
+            //New SSO UI
+            pLogin.inputSpaceID(driver, SPACE_NAME);
+            Thread.sleep(3000);
+            pLogin.inputEmail(driver, "dh.shin+ta_sitemanager@3i.ai");
+            Thread.sleep(3000);
+            pLogin.inputPasswordAndLogin(driver, "qwer1234");
+            Thread.sleep(5000);
 
             //Check On-boarding Popup
             SiteListPage pSiteList = new SiteListPage();
@@ -148,6 +165,7 @@ public class ManageSiteTest extends TestBase {
             //Search the site
             //SiteListPage pSiteList = new SiteListPage();
             pSiteList.searchSite(driver, "Automated Update Site");
+            Thread.sleep(3000);
 
             //Edit menu
             SiteProfilePage pSiteProfile = new SiteProfilePage(driver);
@@ -157,7 +175,7 @@ public class ManageSiteTest extends TestBase {
             //Delete
             WebElement bDelete = pSiteProfile.getPageElement(driver, "DELETE");
             bDelete.click();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
 
             //Confirm delete
 
@@ -166,7 +184,7 @@ public class ManageSiteTest extends TestBase {
             //System.out.println("FOUND ELEMENT");
             bConfirmDelete.click();
 
-            //Thread.sleep(2000);
+            Thread.sleep(2000);
 
         } catch (Exception e) {
             e.printStackTrace(System.out);
