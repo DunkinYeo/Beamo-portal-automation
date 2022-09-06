@@ -8,7 +8,7 @@
             <run>
                 <include name="abstract" />
                 <include name="smoke" />
-                <exclude name="login" />
+                <include name="login" />
                 <exclude name="grid" />
                 <include name="site" />
                 <exclude name="plan" />
