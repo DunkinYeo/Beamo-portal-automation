@@ -35,7 +35,7 @@ public class SeleniumBase {
             SPACE_NAME = "d-en-en";
         } else if (targetEnv.contains("STAG")) {
             baseurl = config.getString("BASEURLSTAG");
-            SPACE_NAME = "showcase";
+            SPACE_NAME = "s-en-en";
         } else if (targetEnv.contains("LIVE")) {
             baseurl = config.getString("BASEURLLIVE");
             SPACE_NAME = "test";
