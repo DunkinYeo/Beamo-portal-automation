@@ -37,6 +37,13 @@ public class LoginTest extends TestBase {
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         try {
+            //Using a different super admin account on Live env.
+            if (SPACE_NAME == "test" && role == "SUPER ADMIN") {
+                email = "dh.shin+ta_superadmin@3i.ai";
+            }
+
+            System.out.println(email);
+
             System.out.println(role);
             verifyLogin(driver, email, password, role);
             Thread.sleep(3000);
